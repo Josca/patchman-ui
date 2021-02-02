@@ -1,5 +1,6 @@
 /* eslint new-cap: 0 */
-import { notifications, notificationsMiddleware } from '@redhat-cloud-services/frontend-components-notifications';
+import notificationsMiddleware from '@redhat-cloud-services/frontend-components-notifications/notificationsMiddleware';
+import { notificationsReducer } from '@redhat-cloud-services/frontend-components-notifications/redux';
 import ReducerRegistry from '@redhat-cloud-services/frontend-components-utilities/files/cjs/ReducerRegistry';
 import promiseMiddleware from 'redux-promise-middleware';
 import { AdvisoryDetailStore } from './Reducers/AdvisoryDetailStore';
@@ -48,7 +49,7 @@ export function init(...middleware) {
         PackageDetailStore: (state = storage.PackageDetailStore, action) => PackageDetailStore(state, action),
         PackageSystemsStore: (state = storage.PackageSystemsStore, action) => PackageSystemsStore(state, action),
         CvesListStore: (state = storage.CvesListStore, action) => CvesListStore(state, action),
-        notifications
+        notifications: notificationsReducer
     });
 
     return registry;
